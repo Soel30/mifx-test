@@ -58,13 +58,11 @@ class BooksReviewController extends Controller
             ], 404);
         }
 
-        if ($review->user_id !== $request->user()->id) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Book review does not belong to user',
-            ], 403);
-        }
-
         $review->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Book review deleted successfully',
+        ], 200);
     }
 }

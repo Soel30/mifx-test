@@ -87,6 +87,9 @@ class BooksController extends Controller
 
         $book->authors()->sync($request->authors);
 
-        return $this->apiResponseSuccess(new BookResource($book), 'Book created successfully', 204);
+
+        return response()->json([
+            'data' => new BookResource($book),
+        ]);
     }
 }
